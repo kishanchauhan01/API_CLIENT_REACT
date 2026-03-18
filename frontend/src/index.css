@@ -1,0 +1,154 @@
+@import "tailwindcss";
+
+/* ─── Theme tokens (Dark = default) ──────────────────────────── */
+:root {
+  --bg-base: #121212;
+  --bg-surface: #1E1E1E;
+  --bg-elevated: #2A2A2A;
+  --bg-input: #2A2A2A;
+  --bg-hover: #333333;
+  --bg-deep: #0D0D0D;
+  --bg-subtle: #1A1A1A;
+
+  --border-default: #333333;
+  --border-light: #252525;
+  --border-focus: #555555;
+
+  --text-primary: #ffffff;
+  --text-secondary: #9ca3af;   /* gray-400 */
+  --text-tertiary: #6b7280;   /* gray-500 */
+  --text-muted: #4b5563;      /* gray-600 */
+  --text-placeholder: #6b7280;
+
+  --accent: #FF3B30;
+  --accent-hover: #ef4444;
+  --accent-soft: rgba(255, 59, 48, 0.1);
+  --accent-border: rgba(255, 59, 48, 0.3);
+
+  --overlay: rgba(0, 0, 0, 0.7);
+  --shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+
+  --code-green: #86efac;
+  --code-yellow: #fde68a;
+
+  color-scheme: dark;
+}
+
+/* ─── Light Theme ─────────────────────────────────────────────── */
+.light-theme {
+  --bg-base: #f5f5f7;
+  --bg-surface: #ffffff;
+  --bg-elevated: #f0f0f2;
+  --bg-input: #f0f0f2;
+  --bg-hover: #e5e5e7;
+  --bg-deep: #e8e8ea;
+  --bg-subtle: #fafafa;
+
+  --border-default: #d1d5db;
+  --border-light: #e5e7eb;
+  --border-focus: #9ca3af;
+
+  --text-primary: #111827;
+  --text-secondary: #4b5563;
+  --text-tertiary: #6b7280;
+  --text-muted: #9ca3af;
+  --text-placeholder: #9ca3af;
+
+  --accent: #FF3B30;
+  --accent-hover: #dc2626;
+  --accent-soft: rgba(255, 59, 48, 0.08);
+  --accent-border: rgba(255, 59, 48, 0.25);
+
+  --overlay: rgba(0, 0, 0, 0.4);
+  --shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.12);
+
+  --code-green: #15803d;
+  --code-yellow: #a16207;
+
+  color-scheme: light;
+}
+
+/* ─── System theme: follow OS preference ──────────────────────── */
+@media (prefers-color-scheme: light) {
+  .system-theme {
+    --bg-base: #f5f5f7;
+    --bg-surface: #ffffff;
+    --bg-elevated: #f0f0f2;
+    --bg-input: #f0f0f2;
+    --bg-hover: #e5e5e7;
+    --bg-deep: #e8e8ea;
+    --bg-subtle: #fafafa;
+
+    --border-default: #d1d5db;
+    --border-light: #e5e7eb;
+    --border-focus: #9ca3af;
+
+    --text-primary: #111827;
+    --text-secondary: #4b5563;
+    --text-tertiary: #6b7280;
+    --text-muted: #9ca3af;
+    --text-placeholder: #9ca3af;
+
+    --accent: #FF3B30;
+    --accent-hover: #dc2626;
+    --accent-soft: rgba(255, 59, 48, 0.08);
+    --accent-border: rgba(255, 59, 48, 0.25);
+
+    --overlay: rgba(0, 0, 0, 0.4);
+    --shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.12);
+
+    --code-green: #15803d;
+    --code-yellow: #a16207;
+
+    color-scheme: light;
+  }
+}
+
+/* ─── Tailwind v4 theme extension ─────────────────────────────── */
+@theme {
+  --color-dark: #121212;
+  --color-dark-surface: #1E1E1E;
+  --color-dark-border: #333333;
+  --color-primary: #FF3B30;
+
+  /* Semantic tokens for Tailwind classes */
+  --color-t-base: var(--bg-base);
+  --color-t-surface: var(--bg-surface);
+  --color-t-elevated: var(--bg-elevated);
+  --color-t-input: var(--bg-input);
+  --color-t-hover: var(--bg-hover);
+  --color-t-deep: var(--bg-deep);
+  --color-t-subtle: var(--bg-subtle);
+  --color-t-border: var(--border-default);
+  --color-t-border-light: var(--border-light);
+  --color-t-border-focus: var(--border-focus);
+  --color-t-text: var(--text-primary);
+  --color-t-text-secondary: var(--text-secondary);
+  --color-t-text-tertiary: var(--text-tertiary);
+  --color-t-text-muted: var(--text-muted);
+}
+
+/* ─── Base styles ─────────────────────────────────────────────── */
+body {
+  background-color: var(--bg-base);
+  color: var(--text-primary);
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* Smooth transitions for theme switching */
+*, *::before, *::after {
+  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
+}
+
+/* Override transition for animations/interactivity that shouldn't be delayed */
+button, a, input, select, textarea {
+  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease, transform 0.15s ease;
+}
+
+/* Scrollbar theming */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-base); }
+::-webkit-scrollbar-thumb { background: var(--border-default); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--border-focus); }
